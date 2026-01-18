@@ -216,8 +216,7 @@ If you use this code or data, please cite:
 
 ```bibtex
 @article{badmus2026afcfta,
-  title={Ex-Ante Economic Impacts of the African Continental Free Trade Area: 
-         A Structural Gravity Analysis},
+  title={An Ex-Ante Evaluation of the Economic Impact of the African Continental Free Trade Area (AfCFTA)},
   author={Badmus, Jamiu Olamilekan},
   year={2026},
   volume={},
