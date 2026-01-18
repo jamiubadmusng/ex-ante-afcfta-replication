@@ -1,0 +1,201 @@
+% README for Replication Package
+% Ex-Ante Economic Impacts of the African Continental Free Trade Area (AfCFTA)
+% Author: Jamiu Olamilekan Badmus
+\documentclass[12pt]{article}
+\usepackage{pifont}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage{longtable,booktabs}
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+
+\title{\textbf{README: Replication Package} \\ \textbf{An Ex-Ante Economic Impacts of the African Continental Free Trade Area (AfCFTA)}}
+\author{Jamiu Olamilekan Badmus}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Overview}
+
+The code in this replication package constructs the analysis files from two primary data sources: the International Trade and Production Database for Estimation (ITPD-E-R02) from the U.S. International Trade Commission and the Dynamic Gravity Dataset (DGD, Release 2.1), using R. Nine R scripts run all of the code to generate the tables and figures in the paper. The replicator should expect the code to run for approximately 2--4 hours on a standard desktop machine.
+
+\section{Data Availability and Provenance Statements}
+
+\subsection{Statement about Rights}
+
+\begin{itemize}
+	\item[\rlap{\raisebox{0.3ex}{\hspace{0.4ex}\tiny \ding{52}}}$\square$] I certify that the author(s) of the manuscript have legitimate access to and permission to use the data used in this manuscript.
+\end{itemize}
+
+\subsection{Summary of Availability}
+
+\begin{itemize}
+	\item[\rlap{\raisebox{0.3ex}{\hspace{0.4ex}\tiny \ding{52}}}$\square$] All data \textbf{are} publicly available.
+\end{itemize}
+
+\subsection{Details on Each Data Source}
+
+\textbf{International Trade and Production Database for Estimation (ITPD-E-R02).} Data on bilateral trade flows and domestic trade across 170 industries were downloaded from the U.S. International Trade Commission. Data can be downloaded from \url{https://www.usitc.gov/data/gravity/itpde.htm}. The data are in the public domain.
+
+Datafiles:
+\begin{itemize}
+	\item \texttt{01\_input/itpder2.rds} (aggregated trade data)
+	\item \texttt{01\_input/itpder2\_1.rds} to \texttt{01\_input/itpder2\_170.rds} (industry-level trade data)
+\end{itemize}
+
+\textbf{Dynamic Gravity Dataset (DGD, Release 2.1).} Gravity covariates (distance, contiguity, colonial ties, common language, RTA membership, WTO membership, etc.) were downloaded from the U.S. International Trade Commission. Data can be downloaded from \url{https://www.usitc.gov/data/gravity/dgd.htm}.
+
+Datafiles:
+\begin{itemize}
+	\item \texttt{01\_input/dgd\_2\_1.rds} (gravity covariates for main analysis)
+	\item \texttt{01\_input/dgd\_2\_1\_rob.rds} (gravity covariates for robustness checks)
+\end{itemize}
+
+\textbf{Structural Gravity Database.} Manufacturing trade data from the World Trade Organization Structural Gravity Database were used for robustness checks. Data can be downloaded from \url{https://www.wto.org/english/res_e/reser_e/structural_gravity_e.htm}.
+
+Datafile: \texttt{01\_input/struc.rds}
+
+\section{Computational Requirements}
+
+\subsection{Software Requirements}
+
+\begin{itemize}
+	\item R (code was last run with version 4.3.0 or later)
+	\item Required R packages:
+	\begin{itemize}
+		\item \texttt{tidyverse} -- data manipulation and visualization
+		\item \texttt{fixest} -- PPML estimation with high-dimensional fixed effects
+		\item \texttt{data.table} -- efficient data manipulation for large datasets
+		\item \texttt{haven} -- reading Stata files
+		\item \texttt{readstata13} -- reading Stata 13+ files
+		\item \texttt{huxtable} -- creating publication-quality tables
+		\item \texttt{flextable} -- flexible table formatting
+		\item \texttt{msm} -- delta method calculations
+		\item \texttt{car} -- companion to applied regression
+		\item \texttt{broom} -- tidying model outputs
+		\item \texttt{purrr} -- functional programming tools
+		\item \texttt{kableExtra} -- enhanced table formatting
+		\item \texttt{ggplot2} -- data visualization
+		\item \texttt{scales} -- scale functions for visualization
+	\end{itemize}
+\end{itemize}
+
+All packages can be installed by running:
+\begin{verbatim}
+install.packages(c("tidyverse", "fixest", "data.table", "haven",
+                   "readstata13", "huxtable", "flextable", "msm",
+                   "car", "broom", "purrr", "kableExtra",
+                   "ggplot2", "scales"))
+\end{verbatim}
+
+\subsection{Memory and Runtime Requirements}
+
+\paragraph{Summary.} Approximate time needed to reproduce the analyses on a standard (2024) desktop machine:
+
+\begin{itemize}
+	\item[$\square$] $<$10 minutes
+	\item[$\square$] 10--60 minutes
+	\item[$\square$] 1--2 hours
+	\item[\rlap{\raisebox{0.3ex}{\hspace{0.4ex}\tiny \ding{52}}}$\square$] 2--8 hours
+	\item[$\square$] 8--24 hours
+	\item[$\square$] $>$24 hours
+\end{itemize}
+
+\paragraph{Details.} The code was last run on a desktop machine with Intel Core i7 processor, 16~GB of RAM, and Windows 10/11. The General Equilibrium PPML estimation scripts are the most computationally intensive, requiring approximately 30--60 minutes each for the four sectors.
+
+\section{Description of Programs/Code}
+
+The folder \texttt{00\_code/} contains nine R scripts that replicate all analyses in the paper:
+
+\begin{itemize}
+	\item \textbf{\texttt{code\_to\_clean\_raw\_170\_industries.r}} -- Loads 170 raw industry-level trade datasets downloaded from the USITC, filters them for the years 2000--2019, and saves the cleaned datasets as RDS files. This script should be run first if starting from raw CSV files.
+	
+	\item \textbf{\texttt{afcfta\_descriptive.R}} -- Generates descriptive statistics and summary tables for intra-African trade, including trade volumes by sector, gravity covariates, and visualization of trade patterns (Figure~1 and Table~1).
+	
+	\item \textbf{\texttt{afcfta\_main\_code.R}} -- Estimates the main gravity model using PPML with exporter-time and importer-time fixed effects. Generates Table~2 (sectoral gravity estimates) with border effects for Total, Agriculture, Manufacturing, Mining and Energy, and Services sectors.
+	
+	\item \textbf{\texttt{afcfta\_ge\_data\_preparation.R}} -- Prepares balanced squared datasets for General Equilibrium analysis. Creates balanced panels with imputed domestic trade for each of the four broad sectors (Agriculture, Manufacturing, Mining and Energy, Services) for the year 2019.
+	
+	\item \textbf{\texttt{afcfta\_ge\_estimation\_code\_for\_all\_sectors\_with\_full\_data.R}} -- Implements the General Equilibrium PPML (GEPPML) procedure following Anderson et al.\ (2018) for all four sectors using ITPD-E data with $\sigma = 7$. Generates Table~3 (welfare effects by sector and country).
+	
+	\item \textbf{\texttt{afcfta\_ge\_estimation\_code\_for\_all\_sectors\_with\_full\_data\_higher\_sigma.r}} -- Robustness check: Implements the GEPPML procedure with a higher elasticity of substitution ($\sigma = 10$). Generates Table~D.5 in the Appendix.
+	
+	\item \textbf{\texttt{afcfta\_ge\_estimation\_code\_for\_struc.r}} -- Robustness check: Implements the GEPPML procedure using manufacturing trade data from the Structural Gravity Database with multiple elasticity values ($\sigma = 4, 5, 7, 10$). Generates Table~D.7 and Figure~D.1 (welfare effects world map).
+	
+	\item \textbf{\texttt{170\_industry\_level\_afcfta\_brdr.R}} -- Estimates industry-level border effects for all 170 industries in the ITPD-E database. Generates Table~D.2 (industry-level estimates with full sample) and Table~D.4 (estimates excluding zero trade flows), along with Figure~3 (distribution of border effects by sector).
+	
+	\item \textbf{\texttt{afcfta\_robustness\_checks.R}} -- Robustness checks for the main gravity estimates using the Structural Gravity Database. Tests sensitivity to additional controls (WTO, PTA, EIA membership). Generates Table~D.6.
+\end{itemize}
+
+\section{Instructions to Replicators}
+
+\begin{enumerate}
+	\item Maintain the folder structure of the replication package with three folders: \texttt{00\_code/}, \texttt{01\_input/}, and \texttt{02\_output/}. The output folder should contain subfolders: \texttt{figures/}, \texttt{tables/}, \texttt{csv/}, and \texttt{rds/}.
+	
+	\item Download the required data files from the sources listed above and place them in the \texttt{01\_input/} folder in the appropriate format (RDS or DTA).
+	
+	\item Edit the \texttt{setwd()} command at the beginning of each R script to point to the location of the replication package on your machine.
+	
+	\item Install all required R packages (see Software Requirements above).
+	
+	\item Run the scripts in the following order:
+	\begin{enumerate}
+		\item \texttt{code\_to\_clean\_raw\_170\_industries.r} (only if starting from raw CSV files)
+		\item \texttt{afcfta\_descriptive.R}
+		\item \texttt{afcfta\_main\_code.R}
+		\item \texttt{afcfta\_ge\_data\_preparation.R}
+		\item \texttt{afcfta\_ge\_estimation\_code\_for\_all\_sectors\_with\_full\_data.R}
+		\item \texttt{afcfta\_ge\_estimation\_code\_for\_all\_sectors\_with\_full\_data\_higher\_sigma.r}
+		\item \texttt{afcfta\_ge\_estimation\_code\_for\_struc.r}
+		\item \texttt{170\_industry\_level\_afcfta\_brdr.R}
+		\item \texttt{afcfta\_robustness\_checks.R}
+	\end{enumerate}
+	
+	\item Output files (tables and figures) will be saved to the \texttt{02\_output/} folder.
+\end{enumerate}
+
+\section{List of Tables and Figures}
+
+The provided code reproduces:
+
+\begin{itemize}
+	\item[\rlap{\raisebox{0.3ex}{\hspace{0.4ex}\tiny \ding{52}}}$\square$] All numbers provided in text in the paper.
+	\item[\rlap{\raisebox{0.3ex}{\hspace{0.4ex}\tiny \ding{52}}}$\square$] All tables and figures in the paper.
+\end{itemize}
+
+\small
+\begin{longtable}{p{0.12\textwidth}p{0.42\textwidth}p{0.42\textwidth}}
+	\toprule
+	Output & Program & Output File \\
+	\midrule
+	\endhead
+	Figure 2 & \texttt{afcfta\_descriptive.R} & \texttt{02\_output/figures/ figure\_2.pdf} \\
+	Figure 3 & \texttt{170\_industry\_level\_ afcfta\_brdr.R} & \texttt{02\_output/figures/ figure\_3.pdf} \\
+	Table 1 & \texttt{afcfta\_descriptive.R} & \texttt{02\_output/tables/ table\_1a.tex} \& \texttt{table\_1b.tex} \\
+	Table 2 & \texttt{afcfta\_main\_code.R} & \texttt{02\_output/tables/ table\_2.tex} \\
+	Table 3 & \texttt{afcfta\_ge\_estimation\_ code\_for\_all\_sectors\_ with\_full\_data.R} & \texttt{02\_output/tables/ welfare\_effects\_table\_ full\_data.tex} \\
+	Table D.2 & \texttt{170\_industry\_level\_ afcfta\_brdr.R} & \texttt{02\_output/csv/ table\_a\_3.csv} \\
+	Table D.3 & \texttt{afcfta\_main\_code.R} & \texttt{02\_output/tables/ table\_a\_4.tex} \\
+	Table D.4 & \texttt{170\_industry\_level\_ afcfta\_brdr.R} & \texttt{02\_output/csv/ table\_a\_5.csv} \\
+	Table D.5 & \texttt{afcfta\_ge\_estimation\_ ...\_higher\_sigma.r} & \texttt{02\_output/tables/ welfare\_effects\_table\_ full\_data\_higher\_sigma.tex} \\
+	Table D.6 & \texttt{afcfta\_robustness\_ checks.R} & \texttt{02\_output/tables/ table\_a\_7.tex} \\
+	Table D.7 & \texttt{afcfta\_ge\_estimation\_ code\_for\_struc.r} & \texttt{02\_output/tables/ welfare\_effects\_table\_ struc\_data.tex} \\
+	Figure D.1 & \texttt{afcfta\_ge\_estimation\_ code\_for\_struc.r} & \texttt{02\_output/figures/ welfare\_effects\_world\_ map\_struc\_viridis.pdf} \\
+	\bottomrule
+\end{longtable}
+\normalsize
+
+\section*{Acknowledgments}
+
+This README template is adapted from the template provided by the Social Science Data Editors, available at \url{https://social-science-data-editors.github.io/template_README/}.
+
+\end{document}

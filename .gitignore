@@ -1,0 +1,63 @@
+# R and RStudio
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Session Data files
+.RDataTmp
+
+# User-specific files
+*.Rproj
+
+# R Environment Variables
+.Renviron
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.lot
+*.lof
+*.nav
+*.snm
+*.vrb
+
+# Temporary files
+*~
+*.tmp
+*.temp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Large data files (uncomment if you want to exclude from repo)
+# *.rds
+# *.dta
+# *.csv
+
+# IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# Backup files
+*.bak
+*.backup
+
+# Cache
+__pycache__/
+*.pyc

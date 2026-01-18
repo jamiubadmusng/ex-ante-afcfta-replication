@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Replication Package: Ex-Ante Economic Impacts of the African Continental Free Trade Area (AfCFTA)"
+abstract: >-
+  This repository contains the replication package for the empirical analysis 
+  of the ex-ante economic impacts of the African Continental Free Trade Area 
+  (AfCFTA) agreement using structural gravity models with PPML estimation and 
+  General Equilibrium counterfactual simulations.
+authors:
+  - family-names: "Badmus"
+    given-names: "Jamiu Olamilekan"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+    affiliation: "United Nations University Institute on Comparative Regional Integration Studies (UNU-CRIS)"
+version: 1.0.0
+date-released: 2026-01-18
+license: MIT
+repository-code: "https://github.com/[username]/afcfta-replication"
+url: "https://github.com/[username]/afcfta-replication"
+keywords:
+  - African Continental Free Trade Area
+  - AfCFTA
+  - structural gravity
+  - PPML
+  - general equilibrium
+  - trade policy
+  - welfare effects
+  - replication
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Badmus"
+      given-names: "Jamiu Olamilekan"
+  title: "Ex-Ante Economic Impacts of the African Continental Free Trade Area: A Structural Gravity Analysis"
+  journal: "International Economics"
+  year: 2026
+  # volume: 
+  # issue: 
+  # start: 
+  # end: 
+  # doi: 
