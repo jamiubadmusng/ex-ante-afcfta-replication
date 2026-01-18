@@ -24,7 +24,7 @@ The code in this replication package constructs the analysis files from two prim
 ├── LICENSE                   # MIT License
 ├── CITATION.cff              # Citation metadata
 │
-├── 00_code/                     # R scripts for replication
+├── 00_code/                  # R scripts for replication
 │   ├── code_to_clean_raw_170_industries.r
 │   ├── afcfta_descriptive.R
 │   ├── afcfta_main_code.R
@@ -35,13 +35,13 @@ The code in this replication package constructs the analysis files from two prim
 │   ├── 170_industry_level_afcfta_brdr.R
 │   └── afcfta_robustness_checks.R
 │
-├── 01_input/                     # Input data files
+├── 01_input/                 # Input data files
 │   ├── itpder2_*.rds         # ITPD-E industry-level trade data
 │   ├── dgd_2_1.rds           # Dynamic Gravity Dataset
 │   ├── ge_ppml_data_*.rds    # Prepared GE datasets
 │   └── *.dta                 # Stata format data files
 │
-└── 02_output/                   # Generated outputs
+└── 02_output/                # Generated outputs
     ├── figures/              # PDF figures
     ├── tables/               # LaTeX tables
     └── csv/                  # CSV tables
