@@ -25,13 +25,13 @@ The code in this replication package constructs the analysis files from two prim
 ├── CITATION.cff              # Citation metadata
 │
 ├── 00_code/                  # R scripts for replication
-│   ├── code_to_clean_raw_170_industries.r
+│   ├── code_to_clean_raw_170_industries.R
 │   ├── afcfta_descriptive.R
 │   ├── afcfta_main_code.R
 │   ├── afcfta_ge_data_preparation.R
 │   ├── afcfta_ge_estimation_code_for_all_sectors_with_full_data.R
-│   ├── afcfta_ge_estimation_code_for_all_sectors_with_full_data_higher_sigma.r
-│   ├── afcfta_ge_estimation_code_for_struc.r
+│   ├── afcfta_ge_estimation_code_for_all_sectors_with_full_data_higher_sigma.R
+│   ├── afcfta_ge_estimation_code_for_struc.R
 │   ├── 170_industry_level_afcfta_brdr.R
 │   └── afcfta_robustness_checks.R
 │
@@ -115,13 +115,13 @@ The folder `00_code/` contains nine R scripts that replicate all analyses in the
 
 | Script | Description |
 |--------|-------------|
-| `code_to_clean_raw_170_industries.r` | Loads 170 raw industry-level trade datasets downloaded from the USITC, filters them for the years 2000–2019, and saves the cleaned datasets as RDS files. This script should be run first if starting from raw CSV files. |
+| `code_to_clean_raw_170_industries.R` | Loads 170 raw industry-level trade datasets downloaded from the USITC, filters them for the years 2000–2019, and saves the cleaned datasets as RDS files. This script should be run first if starting from raw CSV files. |
 | `afcfta_descriptive.R` | Generates descriptive statistics and summary tables for intra-African trade, including trade volumes by sector, gravity covariates, and visualization of trade patterns (Figure 1 and Table 1). |
 | `afcfta_main_code.R` | Estimates the main gravity model using PPML with exporter-time and importer-time fixed effects. Generates Table 2 (sectoral gravity estimates) with border effects for Total, Agriculture, Manufacturing, Mining and Energy, and Services sectors. |
 | `afcfta_ge_data_preparation.R` | Prepares balanced squared datasets for General Equilibrium analysis. Creates balanced panels with imputed domestic trade for each of the four broad sectors (Agriculture, Manufacturing, Mining and Energy, Services) for the year 2019. |
 | `afcfta_ge_estimation_code_for_all_sectors_with_full_data.R` | Implements the General Equilibrium PPML (GEPPML) procedure following Anderson et al. (2018) for all four sectors using ITPD-E data with σ = 7. Generates Table 3 (welfare effects by sector and country). |
-| `afcfta_ge_estimation_code_for_all_sectors_with_full_data_higher_sigma.r` | Robustness check: Implements the GEPPML procedure with a higher elasticity of substitution (σ = 10). Generates Table D.5 in the Appendix. |
-| `afcfta_ge_estimation_code_for_struc.r` | Robustness check: Implements the GEPPML procedure using manufacturing trade data from the Structural Gravity Database with multiple elasticity values (σ = 4, 5, 7, 10). Generates Table D.7 and Figure D.1 (welfare effects world map). |
+| `afcfta_ge_estimation_code_for_all_sectors_with_full_data_higher_sigma.R` | Robustness check: Implements the GEPPML procedure with a higher elasticity of substitution (σ = 10). Generates Table D.5 in the Appendix. |
+| `afcfta_ge_estimation_code_for_struc.R` | Robustness check: Implements the GEPPML procedure using manufacturing trade data from the Structural Gravity Database with multiple elasticity values (σ = 4, 5, 7, 10). Generates Table D.7 and Figure D.1 (welfare effects world map). |
 | `170_industry_level_afcfta_brdr.R` | Estimates industry-level border effects for all 170 industries in the ITPD-E database. Generates Table D.2 (industry-level estimates with full sample) and Table D.4 (estimates excluding zero trade flows), along with Figure 3 (distribution of border effects by sector). |
 | `afcfta_robustness_checks.R` | Robustness checks for the main gravity estimates using the Structural Gravity Database. Tests sensitivity to additional controls (WTO, PTA, EIA membership). Generates Table D.6. |
 
@@ -139,13 +139,13 @@ The folder `00_code/` contains nine R scripts that replicate all analyses in the
 4. **Install all required R packages** (see Software Requirements above).
 
 5. **Run the scripts in the following order:**
-   1. `code_to_clean_raw_170_industries.r` (only if starting from raw CSV files)
+   1. `code_to_clean_raw_170_industries.R` (only if starting from raw CSV files)
    2. `afcfta_descriptive.R`
    3. `afcfta_main_code.R`
    4. `afcfta_ge_data_preparation.R`
    5. `afcfta_ge_estimation_code_for_all_sectors_with_full_data.R`
-   6. `afcfta_ge_estimation_code_for_all_sectors_with_full_data_higher_sigma.r`
-   7. `afcfta_ge_estimation_code_for_struc.r`
+   6. `afcfta_ge_estimation_code_for_all_sectors_with_full_data_higher_sigma.R`
+   7. `afcfta_ge_estimation_code_for_struc.R`
    8. `170_industry_level_afcfta_brdr.R`
    9. `afcfta_robustness_checks.R`
 
@@ -177,38 +177,13 @@ The provided code reproduces:
 | Table D.2 | `170_industry_level_afcfta_brdr.R` | `output/csv/table_a_3.csv` |
 | Table D.3 | `afcfta_main_code.R` | `output/tables/table_a_4.tex` |
 | Table D.4 | `170_industry_level_afcfta_brdr.R` | `output/csv/table_a_5.csv` |
-| Table D.5 | `afcfta_ge_estimation_code_for_all_sectors_with_full_data_higher_sigma.r` | `output/tables/welfare_effects_table_full_data_higher_sigma.tex` |
+| Table D.5 | `afcfta_ge_estimation_code_for_all_sectors_with_full_data_higher_sigma.R` | `output/tables/welfare_effects_table_full_data_higher_sigma.tex` |
 | Table D.6 | `afcfta_robustness_checks.R` | `output/tables/table_a_7.tex` |
-| Table D.7 | `afcfta_ge_estimation_code_for_struc.r` | `output/tables/welfare_effects_table_struc_data.tex` |
-| Figure D.1 | `afcfta_ge_estimation_code_for_struc.r` | `output/figures/welfare_effects_world_map_struc_viridis.pdf` |
+| Table D.7 | `afcfta_ge_estimation_code_for_struc.R` | `output/tables/welfare_effects_table_struc_data.tex` |
+| Figure D.1 | `afcfta_ge_estimation_code_for_struc.R` | `output/figures/welfare_effects_world_map_struc_viridis.pdf` |
 
 ---
 
-## 🖨️ Output Files
-
-### Main Paper
-
-| Output | Script | File |
-|--------|--------|------|
-| Figure 2 | `02_descriptive.R` | `output/figures/figure_2.pdf` |
-| Figure 3 | `08_industry_analysis.R` | `output/figures/figure_3.pdf` |
-| Table 1 | `02_descriptive.R` | `output/tables/table_1a.tex`, `table_1b.tex` |
-| Table 2 | `03_main_estimation.R` | `output/tables/table_2.tex` |
-| Table 3 | `05_ge_estimation.R` | `output/tables/welfare_effects_table_full_data.tex` |
-
-### Appendix
-
-| Output | Script | File |
-|--------|--------|------|
-| Table D.2 | `08_industry_analysis.R` | `output/csv/table_a_3.csv` |
-| Table D.3 | `03_main_estimation.R` | `output/tables/table_a_4.tex` |
-| Table D.4 | `08_industry_analysis.R` | `output/csv/table_a_5.csv` |
-| Table D.5 | `06_ge_robustness.R` | `output/tables/welfare_effects_table_full_data_higher_sigma.tex` |
-| Table D.6 | `09_robustness_checks.R` | `output/tables/table_a_7.tex` |
-| Table D.7 | `07_ge_struc_data.R` | `output/tables/welfare_effects_table_struc_data.tex` |
-| Figure D.1 | `07_ge_struc_data.R` | `output/figures/welfare_effects_world_map_struc_viridis.pdf` |
-
----
 
 ## 📖 Citation
 
@@ -229,7 +204,8 @@ If you use this code or data, please cite:
 
 ## 📧 Contact
 
-**Jamiu Olamilekan Badmus**  
+**Jamiu Olamilekan Badmus**
+[Personal Website](https://sites.google.com/view/jamiu-olamilekan-badmus/)
 Email: [jamiubadmus001@gmail.com]
 
 ---
