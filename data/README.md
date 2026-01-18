@@ -10,7 +10,7 @@ This folder contains the data files used in the analysis. Due to size constraint
 **URL:** https://www.usitc.gov/data/gravity/itpde.htm  
 **License:** Public Domain  
 
-The ITPD-E-R02 provides consistent bilateral trade and domestic trade data for 243 countries, 170 industries, and the years 2000–2019.
+The ITPD-E-R02 provides consistent bilateral trade and domestic trade data for 265 countries, 170 industries, and the years 1986–2019.
 
 **Files:**
 - `itpder2.rds` — Aggregated trade data (all sectors combined)
