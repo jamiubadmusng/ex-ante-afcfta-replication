@@ -76,7 +76,7 @@ Datafile: `01_input/struc.rds`
 ### Software
 
 - **R** version 4.3.0 or later
-- **RStudio** (recommended but not required)
+- **RStudio** 2025.09.0+387 or later
 
 ### Required R Packages
 
@@ -132,13 +132,11 @@ The folder `00_code/` contains nine R scripts that replicate all analyses in the
 
 1. **Maintain the folder structure** of the replication package with three folders: `00_code/`, `01_input/`, and `02_output/`. The output folder should contain subfolders: `figures/`, `tables/`, `csv/`, and `rds/`.
 
-2. **Download the required data files** from the sources listed above and place them in the `00_input/` folder in the appropriate format (RDS or DTA).
+2. **Edit the `setwd()` command** at the beginning of each R script to point to the location of the replication package on your machine.
 
-3. **Edit the `setwd()` command** at the beginning of each R script to point to the location of the replication package on your machine.
+3. **Install all required R packages** (see Software Requirements above).
 
-4. **Install all required R packages** (see Software Requirements above).
-
-5. **Run the scripts in the following order:**
+4. **Run the scripts in the following order:**
    1. `code_to_clean_raw_170_industries.R` (only if starting from raw CSV files)
    2. `afcfta_descriptive.R`
    3. `afcfta_main_code.R`
@@ -149,7 +147,7 @@ The folder `00_code/` contains nine R scripts that replicate all analyses in the
    8. `170_industry_level_afcfta_brdr.R`
    9. `afcfta_robustness_checks.R`
 
-6. **Output files** (tables and figures) will be saved to the `02_ output/` folder.
+5. **Output files** (tables and figures) will be saved to the `02_ output/` folder.
 
 ---
 
