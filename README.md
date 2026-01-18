@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![DOI](https://img.shields.io/badge/DOI-10.xxxx/xxxxx-blue.svg)](https://doi.org/)
 
-> **Replication materials for:** Badmus, J. O. (2026). "An Ex-Ante Evaluation of the Economic Impact of the African Continental Free Trade Area" *Erasmus Mundus Master's Dissertation*.
+> **Replication materials for:** Badmus, J. O. (2026). "An Ex-Ante Evaluation of the Economic Impact of the African Continental Free Trade Area (AfCFTA)" *Erasmus Mundus Master's EGEI Dissertation*.
 
 ---
 
